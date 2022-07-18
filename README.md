@@ -1,4 +1,40 @@
-# glog
+# nginxinc/glog
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/golang/glog)](https://goreportcard.com/report/github.com/golang/glog)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/nginxinc/glog)
+![GitHub](https://img.shields.io/github/license/nginxinc/glog)
+
+This is a fork of https://github.com/golang/glog
+
+This fork was created with the intention of updating the log header to include the year.
+
+Standard log output from glog
+```
+I0715 11:40:13.688222 77957 controller.go:839] NGINX is ready
+```
+
+Updated log output with year included
+```
+I20220715 11:40:13.688222 77957 controller.go:839] NGINX is ready
+```
+
+## Development
+
+```
+$ make
+help                 Show available make targets
+test                 Run tests
+lint                 Run linter
+```
+
+## TODOs
+
+- [x] Update unit tests
+- [x] Updated README
+- [ ] Create MAKEFILE for builds
+
+---
+## Original README from golang/glog
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/golang/glog)](https://pkg.go.dev/github.com/golang/glog)
 
