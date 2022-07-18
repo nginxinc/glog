@@ -1,3 +1,3 @@
-module github.com/golang/glog
+module github.com/nginxinc/glog
 
-go 1.11
+go 1.18
