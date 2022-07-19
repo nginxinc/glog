@@ -1,9 +1,37 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/golang/glog)](https://goreportcard.com/report/github.com/golang/glog)
+# nginxinc/glog
+
+![Go](https://github.com/nginxinc/glog/workflows/Go/badge.svg)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/nginxinc/glog)
+[![Go Report Card](https://goreportcard.com/badge/github.com/golang/glog)](https://goreportcard.com/report/github.com/golang/glog)
 ![GitHub](https://img.shields.io/github/license/nginxinc/glog)
 
-# glog
+This is a fork of https://github.com/golang/glog
 
+This fork was created with the intention of updating the log header to include the year.
+
+This can be done be setting the flag `-include_year=true` 
+
+Standard log output from glog
+```
+I0715 11:40:13.688222 77957 controller.go:839] NGINX is ready
+```
+
+Updated log output with year included
+```
+I20220715 11:40:13.688222 77957 controller.go:839] NGINX is ready
+```
+
+## Development
+
+```
+$ make
+help                 Show available make targets
+test                 Run tests
+lint                 Run linter
+```
+
+---
+## Original README from golang/glog
 
 
 Leveled execution logs for Go.
