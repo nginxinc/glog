@@ -64,12 +64,3 @@ glog.V(2).Infoln("Processed", nItems, "elements")
 ```
 
 The repository contains a forked open source version of the log package used inside Google.
-
-## Development
-
-```
-$ make
-help                 Show available make targets
-test                 Run tests
-lint                 Run linter
-```
