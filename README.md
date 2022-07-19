@@ -31,7 +31,7 @@ lint                 Run linter
 
 - [x] Update unit tests
 - [x] Updated README
-- [ ] Create MAKEFILE for builds
+- [x] Create MAKEFILE for builds
 
 ---
 ## Original README from golang/glog
