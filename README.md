@@ -1,7 +1,8 @@
 # nginxinc/glog
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/golang/glog)](https://goreportcard.com/report/github.com/golang/glog)
+![Go](https://github.com/nginxinc/glog/workflows/Go/badge.svg)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/nginxinc/glog)
+[![Go Report Card](https://goreportcard.com/badge/github.com/golang/glog)](https://goreportcard.com/report/github.com/golang/glog)
 ![GitHub](https://img.shields.io/github/license/nginxinc/glog)
 
 This is a fork of https://github.com/golang/glog
