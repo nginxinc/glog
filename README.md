@@ -8,6 +8,8 @@ This is a fork of https://github.com/golang/glog
 
 This fork was created with the intention of updating the log header to include the year.
 
+This can be done be setting the flag `-include_year=true` 
+
 Standard log output from glog
 ```
 I0715 11:40:13.688222 77957 controller.go:839] NGINX is ready
