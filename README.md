@@ -27,12 +27,6 @@ test                 Run tests
 lint                 Run linter
 ```
 
-## TODOs
-
-- [x] Update unit tests
-- [x] Updated README
-- [x] Create MAKEFILE for builds
-
 ---
 ## Original README from golang/glog
 
