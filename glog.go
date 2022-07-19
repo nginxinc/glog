@@ -39,6 +39,8 @@
 // This package provides several flags that modify this behavior.
 // As a result, flag.Parse must be called before any logging is done.
 //
+//  -include_year=false
+//		Flag to include the year in the log header output.
 //	-logtostderr=false
 //		Logs are written to standard error instead of to files.
 //	-alsologtostderr=false
@@ -396,6 +398,7 @@ type flushSyncWriter interface {
 }
 
 func init() {
+	flag.BoolVar(&logging.includeYear, "include_year", false, "flag to include year in the log header")
 	flag.BoolVar(&logging.toStderr, "logtostderr", false, "log to standard error instead of files")
 	flag.BoolVar(&logging.alsoToStderr, "alsologtostderr", false, "log to standard error as well as files")
 	flag.Var(&logging.verbosity, "v", "log level for V logs")
@@ -420,6 +423,7 @@ type loggingT struct {
 	// Boolean flags. Not handled atomically because the flag.Value interface
 	// does not let us avoid the =true, and that shorthand is necessary for
 	// compatibility. TODO: does this matter enough to fix? Seems unlikely.
+	includeYear  bool // The -include_year flag.
 	toStderr     bool // The -logtostderr flag.
 	alsoToStderr bool // The -alsologtostderr flag.
 
@@ -453,6 +457,8 @@ type loggingT struct {
 	// safely using atomic.LoadInt32.
 	vmodule   moduleSpec // The state of the -vmodule flag.
 	verbosity Level      // V logging level, the value of the -v flag/
+
+	yearPadding int
 }
 
 // buffer holds a byte Buffer for reuse. The zero value is ready for use.
@@ -563,21 +569,24 @@ func (l *loggingT) formatHeader(s severity, file string, line int) *buffer {
 	hour, minute, second := now.Clock()
 	// Lyyyymmdd hh:mm:ss.uuuuuu threadid file:line]
 	buf.tmp[0] = severityChar[s]
-	buf.nDigits(4, 1, year, '0')
-	buf.twoDigits(5, int(month))
-	buf.twoDigits(7, day)
-	buf.tmp[9] = ' '
-	buf.twoDigits(10, hour)
-	buf.tmp[12] = ':'
-	buf.twoDigits(13, minute)
-	buf.tmp[15] = ':'
-	buf.twoDigits(16, second)
-	buf.tmp[18] = '.'
-	buf.nDigits(6, 19, now.Nanosecond()/1000, '0')
-	buf.tmp[25] = ' '
-	buf.nDigits(7, 26, pid, ' ') // TODO: should be TID
-	buf.tmp[33] = ' '
-	buf.Write(buf.tmp[:34])
+	if l.includeYear {
+		buf.nDigits(4, 1, year, '0')
+		l.yearPadding = 4
+	}
+	buf.twoDigits(1+l.yearPadding, int(month))
+	buf.twoDigits(3+l.yearPadding, day)
+	buf.tmp[5+l.yearPadding] = ' '
+	buf.twoDigits(6+l.yearPadding, hour)
+	buf.tmp[8+l.yearPadding] = ':'
+	buf.twoDigits(9+l.yearPadding, minute)
+	buf.tmp[11+l.yearPadding] = ':'
+	buf.twoDigits(12+l.yearPadding, second)
+	buf.tmp[14+l.yearPadding] = '.'
+	buf.nDigits(6, 15+l.yearPadding, now.Nanosecond()/1000, '0')
+	buf.tmp[21+l.yearPadding] = ' '
+	buf.nDigits(7, 22+l.yearPadding, pid, ' ') // TODO: should be TID
+	buf.tmp[29+l.yearPadding] = ' '
+	buf.Write(buf.tmp[:30+l.yearPadding])
 	buf.WriteString(file)
 	buf.tmp[0] = ':'
 	n := buf.someDigits(1, line)
