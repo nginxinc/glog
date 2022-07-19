@@ -1,6 +1,10 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/golang/glog)](https://goreportcard.com/report/github.com/golang/glog)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/nginxinc/glog)
+![GitHub](https://img.shields.io/github/license/nginxinc/glog)
+
 # glog
 
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/golang/glog)](https://pkg.go.dev/github.com/golang/glog)
+
 
 Leveled execution logs for Go.
 
@@ -31,6 +35,13 @@ if glog.V(2) {
 glog.V(2).Infoln("Processed", nItems, "elements")
 ```
 
-The repository contains an open source version of the log package used inside Google. The master copy of the source lives inside Google, not here. The code in this repo is for export only and is not itself under development. Feature requests will be ignored.
+The repository contains a forked open source version of the log package used inside Google.
 
-Send bug reports to golang-nuts@googlegroups.com.
+## Development
+
+```
+$ make
+help                 Show available make targets
+test                 Run tests
+lint                 Run linter
+```
