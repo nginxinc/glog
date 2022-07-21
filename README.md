@@ -21,6 +21,10 @@ Updated log output with year included
 I20220715 11:40:13.688222 77957 controller.go:839] NGINX is ready
 ```
 
+## Contributions
+Contributions to this repo are allowed, but discouraged.
+The purpose of this repo is to provide an implementation of glog that will output the year in the log header.
+
 ## Development
 
 ```
