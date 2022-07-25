@@ -25,4 +25,3 @@ test: ## Run tests
 
 lint: ## Run linter
 	docker run --pull always --rm -v $(shell pwd):/glog -w /glog -v $(shell go env GOCACHE):/cache/go -e GOCACHE=/cache/go -e GOLANGCI_LINT_CACHE=/cache/go -v $(shell go env GOPATH)/pkg:/go/pkg golangci/golangci-lint:latest golangci-lint --color always run
-

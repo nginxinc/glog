@@ -9,7 +9,7 @@ This is a fork of https://github.com/golang/glog
 
 This fork was created with the intention of updating the log header to include the year.
 
-This can be done be setting the flag `-include_year=true` 
+This can be done by setting the flag `-include_year=true`
 
 Standard log output from glog
 ```
@@ -37,7 +37,6 @@ lint                 Run linter
 ---
 ## Original README from golang/glog
 
-
 Leveled execution logs for Go.
 
 This is an efficient pure Go implementation of leveled logs in the
@@ -49,15 +48,15 @@ control over logging at the file level.
 The comment from `glog.go` introduces the ideas:
 
 Package _glog_ implements logging analogous to the Google-internal C++ INFO/ERROR/V setup.  It provides the functions Info, Warning, Error, Fatal, plus formatting variants such as Infof. It also provides V-style loggingcontrolled by the `-v` and `-vmodule=file=2` flags.
-	
+
 Basic examples:
 
 ```go
 glog.Info("Prepare to repel boarders")
-	
+
 glog.Fatalf("Initialization failed: %s", err)
 ```
-	
+
 See the documentation for the V function for an explanation of these examples:
 
 ```go
